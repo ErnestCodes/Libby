@@ -1,3 +1,4 @@
 {
-  "mongoURI": "mongodb+srv://emmy123:emmy123@devnetwork.r0rje.mongodb.net/devnetdb?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://emmy123:emmy123@devnetwork.r0rje.mongodb.net/devnetdb?retryWrites=true&w=majority",
+  "jwtSecret": "devnetworktoken"
 }
