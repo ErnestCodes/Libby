@@ -21,7 +21,7 @@ router.get("/", auth, async (req, res) => {
 });
 
 // @route  POST api/auth
-// @desc   Authenticate user && Get token
+// @desc   Authenticate user && Get token --> Login route
 // @access Public
 router.post(
   "/",
@@ -61,7 +61,6 @@ router.post(
       const payload = {
         user: user.id,
       };
-
       jwt.sign(
         payload,
         config.get("jwtSecret"),
