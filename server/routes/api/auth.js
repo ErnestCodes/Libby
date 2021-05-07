@@ -12,7 +12,8 @@ const bcrypt = require("bcryptjs");
 // @access Public
 router.get("/", auth, async (req, res) => {
   try {
-    const user = await User.findById(req.user).select("-password");
+    // This will search for the user in the database by ID without including the password
+    const user = await User.findById(req.user.id).select("-password");
     res.json(user);
   } catch (err) {
     console.error(err.message);
@@ -39,6 +40,7 @@ router.post(
 
     try {
       // See if the user exits
+      // This will find/search the user in the database by email
       let user = await User.findOne({
         email: email,
       });

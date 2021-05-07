@@ -32,6 +32,7 @@ router.post(
 
     try {
       // See if the user exits
+      // This will find the user in the database by email
       let user = await User.findOne({
         email: email,
       });
@@ -47,7 +48,7 @@ router.post(
         // SIZE
         s: "200",
         // RATING
-        r: "rating",
+        r: "pg",
         // DEFAULT
         d: "mm",
       });
@@ -68,7 +69,9 @@ router.post(
 
       // Return the jsonwebtoken
       const payload = {
-        user: user.id,
+        user: {
+          id: user.id,
+        },
       };
 
       jwt.sign(
