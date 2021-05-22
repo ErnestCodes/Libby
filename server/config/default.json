@@ -1,4 +1,6 @@
 {
   "mongoURI": "mongodb+srv://emmy123:emmy123@devnetwork.r0rje.mongodb.net/devnetdb?retryWrites=true&w=majority",
-  "jwtSecret": "devnetworktoken"
+  "jwtSecret": "devnetworktoken",
+  "githubClientId": "7f4dc5b01532e08264ec",
+  "githubSecret": "572b56ae2384882632c86f67bd9246d90266d3a6"
 }
