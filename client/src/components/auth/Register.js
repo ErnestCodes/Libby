@@ -1,17 +1,16 @@
 import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { connect } from "react-redux";
+import { setAlert } from "../../actions/alert";
+import PropTypes from "prop-types";
 
-function Register() {
+function Register({ setAlert }) {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     password: "",
     password2: "",
   });
-
-  const notify = () => toast.error("Passwords do not match");
 
   const { name, email, password, password2 } = formData;
 
@@ -21,7 +20,7 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (password !== password2) {
-      notify();
+      setAlert("Passwords do not match", "danger", 5000);
     } else {
       console.log("SUCCESS");
     }
@@ -78,7 +77,6 @@ function Register() {
           />
         </div>
         <input type="submit" className="btn btn-color" value="Register" />
-        <ToastContainer />
       </form>
       <p className="my-1">
         Already have an account?{" "}
@@ -90,4 +88,8 @@ function Register() {
   );
 }
 
-export default Register;
+Register.prototypes = {
+  setAlert: PropTypes.func.isRequired,
+};
+
+export default connect(null, { setAlert })(Register);
