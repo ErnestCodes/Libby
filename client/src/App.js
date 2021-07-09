@@ -8,6 +8,7 @@ import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import Dashboard from "./components/dashboard/Dashboard";
 import PrivateRoute from "./components/routing/PrivateRoute";
+import CreateProfile from "./components/profile-forms/CreateProfile";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -40,6 +41,7 @@ function App() {
                 path="/dashboard"
                 comp={Dashboard}
               ></PrivateRoute>
+              <PrivateRoute exact path="/create-profile" comp={CreateProfile} />
             </Switch>
           </section>
         </Fragment>
