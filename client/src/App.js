@@ -6,9 +6,10 @@ import Alert from "./components/layout/Alert";
 import Notification from "./components/layout/Notification";
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
-import Dashboard from "./components/dashboard/Dashboard";
+import Dashboard from "./components/Dashboard/Dashboard";
 import PrivateRoute from "./components/routing/PrivateRoute";
 import CreateProfile from "./components/profile-forms/CreateProfile";
+import EditProfile from "./components/profile-forms/EditProfile";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
@@ -42,6 +43,7 @@ function App() {
                 comp={Dashboard}
               ></PrivateRoute>
               <PrivateRoute exact path="/create-profile" comp={CreateProfile} />
+              <PrivateRoute exact path="/edit-profile" comp={EditProfile} />
             </Switch>
           </section>
         </Fragment>
