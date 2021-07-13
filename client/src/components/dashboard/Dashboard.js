@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import { getCurrentProfile } from "../../actions/profile";
 import DashboardActions from "../Dashboard/DashboardActions";
+import Experience from "./Experience";
 import PropTypes from "prop-types";
 
 const Dashboard = ({
@@ -36,6 +37,16 @@ const Dashboard = ({
           </Link>
         </Fragment>
       )}
+
+      {profile.experience.map((exp) => (
+        <Experience
+          key={exp._id}
+          experience={{
+            company: exp.company,
+            title: exp.title,
+          }}
+        />
+      ))}
     </Fragment>
   );
 };
