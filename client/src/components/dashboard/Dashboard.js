@@ -28,6 +28,7 @@ const Dashboard = ({
       {profile !== null ? (
         <Fragment>
           <DashboardActions />
+          <Experience experience={profile.experience} />
         </Fragment>
       ) : (
         <Fragment>
@@ -38,7 +39,7 @@ const Dashboard = ({
         </Fragment>
       )}
 
-      {profile.experience.map((exp) => (
+      {/* {profile.experience.map((exp) => (
         <Experience
           key={exp._id}
           experience={{
@@ -46,7 +47,7 @@ const Dashboard = ({
             title: exp.title,
           }}
         />
-      ))}
+      ))} */}
     </Fragment>
   );
 };

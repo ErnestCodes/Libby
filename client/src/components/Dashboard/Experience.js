@@ -4,6 +4,23 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 function Experience({ experience }) {
+  const experiences = experience.map((exp) => (
+    <tr key={exp._id}>
+      <td>{exp.company}</td>
+      <td className="hide-sm">{exp.title}</td>
+      <td>
+        <Moment format="YYYY/MM/DD">{exp.from}</Moment> -{" "}
+        {exp.to === null ? (
+          " Now"
+        ) : (
+          <Moment format="YYYY/MM/DD">{exp.to}</Moment>
+        )}
+      </td>
+      <td>
+        <button class="btn btn-danger">Delete</button>
+      </td>
+    </tr>
+  ));
   return (
     <Fragment>
       <h2 className="my-2">Experience Credentials</h2>
@@ -16,29 +33,14 @@ function Experience({ experience }) {
             <th></th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>{experience.company}</td>
-            <td className="hide-sm">{experience.title}</td>
-            <td className="hide-sm">02-03-2009 - 01-02-2014</td>
-            <td>
-              <button className="btn btn-danger">Delete</button>
-            </td>
-          </tr>
-          {/* <tr>
-            <td>Traversy Media</td>
-            <td className="hide-sm">Instructor & Developer</td>
-            <td className="hide-sm">02-03-2015 - Now</td>
-            <td>
-              <button className="btn btn-danger">Delete</button>
-            </td>
-          </tr> */}
-        </tbody>
+        <tbody>{experiences}</tbody>
       </table>
     </Fragment>
   );
 }
 
-Experience.propTypes = {};
+Experience.propTypes = {
+  experience: PropTypes.array.isRequired,
+};
 
 export default Experience;
