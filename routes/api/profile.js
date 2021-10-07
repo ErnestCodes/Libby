@@ -3,9 +3,11 @@ const router = express.Router();
 const auth = require("../../middleware/auth");
 const { check, validationResult, Result } = require("express-validator");
 const Profile = require("../../models/Profile");
+const Post = require("../../models/Posts");
 const User = require("../../models/User");
 const request = require("request");
 const config = require("config");
+const Posts = require("../../models/Posts");
 
 // @route  GET api/profile/me
 // @desc   Get current users profile
@@ -159,8 +161,8 @@ router.get("/user/:user_id", async (req, res) => {
 
 router.delete("/", auth, async (req, res) => {
   try {
-    // @todo - remove users posts
-
+    // Remove users posts
+    await Posts.deleteMany({ user: req.user.id });
     // Remove profile
     await Profile.findOneAndRemove({ user: req.user.id });
 
@@ -228,18 +230,14 @@ router.put(
 
 router.delete("/experience/:exp_id", auth, async (req, res) => {
   try {
-    let profile = await Profile.findOne({ user: req.user.id });
+    let foundProfile = await Profile.findOne({ user: req.user.id });
 
-    const removeIndex = profile.experience
-      .map((item) => item.id)
-      .indexOf(req.params.exp_id);
+    foundProfile.experience = foundProfile.experience.filter(
+      (exp) => exp._id.toString() !== req.params.exp_id
+    );
 
-    profile.experience.splice(removeIndex, 1);
-    // splice(positionOfTheItem, NumberOfItemsToBeRemoved)
-
-    await profile.save();
-
-    res.json({ msg: "Experience deleted" });
+    await foundProfile.save();
+    return res.status(200).json(foundProfile);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
@@ -300,18 +298,14 @@ router.put(
 
 router.delete("/education/:edu_id", auth, async (req, res) => {
   try {
-    let profile = await Profile.findOne({ user: req.user.id });
+    let foundProfile = await Profile.findOne({ user: req.user.id });
 
-    const removeIndex = profile.education
-      .map((item) => item.id)
-      .indexOf(req.params.edu_id);
+    foundProfile.education = foundProfile.education.filter(
+      (edu) => edu._id.toString() !== req.params.edu_id
+    );
 
-    profile.education.splice(removeIndex, 1);
-    // splice(positionOfTheItem, NumberOfItemsToBeRemoved)
-
-    await profile.save();
-
-    res.json({ msg: "education deleted" });
+    await foundProfile.save();
+    return res.status(200).json(foundProfile);
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
