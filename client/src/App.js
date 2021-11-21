@@ -18,8 +18,10 @@ import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/auth";
 import setAuthToken from "./utils/setAuthToken";
+import Profiles from "./components/profiles/Profile";
 import AddExperience from "./components/profile-forms/AddExperience";
 import AddEducation from "./components/profile-forms/AddEducation";
+import Profile from "./components/profile/Profile";
 function App() {
   if (localStorage.token) {
     setAuthToken(localStorage.token);
@@ -39,6 +41,8 @@ function App() {
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/profiles" component={Profiles} />
+              <Route exact path="/profile/:id" component={Profile} />
               <PrivateRoute
                 exact
                 path="/dashboard"

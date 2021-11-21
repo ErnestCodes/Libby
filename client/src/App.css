@@ -216,6 +216,10 @@ img {
 
 .round-img {
   border-radius: 50%;
+  height: 200px;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
 }
 
 .line {
