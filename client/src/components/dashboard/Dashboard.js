@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner";
 import { deleteAccount, getCurrentProfile } from "../../actions/profile";
-import DashboardActions from "../Dashboard/DashboardActions";
+import DashboardActions from "./DashboardActions";
 import Experience from "./Experience";
 import Education from "./Education";
 import PropTypes from "prop-types";
