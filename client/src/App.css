@@ -237,6 +237,15 @@ img {
   color: #fff;
 }
 
+.bg-color {
+  background: #dd2476;
+  color: #fff;
+}
+
+#arrow-left-icon {
+  color: #dd2476;
+}
+
 .text-color {
   color: #dd2476;
 }
