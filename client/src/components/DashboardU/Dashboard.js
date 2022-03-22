@@ -52,7 +52,7 @@ const Dashboard = ({
   );
 };
 
-dashboard.propTypes = {
+Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
