@@ -8,7 +8,7 @@ import Experience from "./Experience";
 import Education from "./Education";
 import PropTypes from "prop-types";
 
-const dashboard = ({
+const Dashboard = ({
   auth: { user },
   profile: { profile, loading },
   getCurrentProfile,
@@ -65,5 +65,5 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
-  dashboard
+  Dashboard
 );
